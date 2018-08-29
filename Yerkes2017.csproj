@@ -330,6 +330,7 @@
     <Compile Include="Assets\loadAsset.cs" />
     <Compile Include="Assets\Scripts\AssetDownloader.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
+    <Compile Include="Assets\TouchSelect.cs" />
     <Compile Include="Assets\vbScript.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />

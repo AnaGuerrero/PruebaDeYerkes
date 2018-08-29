@@ -8,6 +8,7 @@ public class AddComponent : MonoBehaviour {
     public Transform cuboTex;
     int numero=0;
     List<GameObject> cubos = new List<GameObject>();
+    TouchSelect touchSelect = new TouchSelect();
 
     public void addComponent() {
         Debug.Log("Añadiendo componente");
@@ -18,9 +19,13 @@ public class AddComponent : MonoBehaviour {
         TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
         string sNumero = (string)converter.ConvertTo(numero, typeof(string));
         cube.name = "Cubo" + sNumero;
-        cube.AddComponent<Lean.Touch.LeanTranslate>();
         cubos.Add(cube);
         Debug.Log(cube.name);
+        if(touchSelect.GetSelect() != null)
+        {
+            touchSelect.DeleteTranslate(touchSelect.GetSelect());
+        }
+        touchSelect.touchSelect(GetList());
     }
 
     public List<GameObject> GetList()
