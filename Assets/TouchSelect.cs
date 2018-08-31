@@ -30,21 +30,5 @@ public class TouchSelect : MonoBehaviour {
         translate = objeto.GetComponent<Lean.Touch.LeanTranslate>();
         Destroy(translate);
     }
-
-    public void DestroyObject()
-    {
-        AddComponent addComponent = new AddComponent();
-
-        List<GameObject> cubos = addComponent.GetList();
-
-        int ultimo = cubos.Count;
-
-        if (ultimo > 0)
-        {
-            seleccionado = cubos[ultimo - 1];
-            Destroy(seleccionado);
-        }
-        
-    }
     
 }

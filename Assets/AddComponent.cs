@@ -32,4 +32,5 @@ public class AddComponent : MonoBehaviour {
     {
         return cubos;
     }
+
 }

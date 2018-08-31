@@ -1,6 +1,7 @@
 Android
 SceneListBegin?
 Assets/prueba.unity
+Assets/vision.unity
 SceneListEnd?
 268ef825502a475f763a8f3739ab652c Assembly-CSharp.dll:.VRIntegrationHelper
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -124,7 +125,9 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Vuforia.DefaultInitializationErrorHandler
 2f514da27b71d477e62b77ba8324ad55 Assembly-CSharp.dll:Lean.Touch.LeanPlane
+75fbe662aa0cb4d511d194ea28b34643 Assembly-CSharp.dll:.TouchSelect
 0e5d517277ec9ce8ca9d50dd679a865c Assembly-CSharp.dll:Lean.Touch.LeanFingerSwipe
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Clicker
 eb3cd1af2e36a7a12552fafc4f6b3f13 Assembly-CSharp.dll:.AssetDownloader
 215f21c984a05428dd33c8419e0a1c57 Assembly-CSharp.dll:Vuforia.SurfaceBehaviour
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
@@ -148,6 +151,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Vuforia.ReconstructionFromTargetBehaviour
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
+001cb7e573e19f889efd8b574425572c Assembly-CSharp.dll:.vbScript
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CreateAssetBundle
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Vuforia.HideExcessAreaBehaviour
 387ef655a40a5a09b4b289e4961f5583 Assembly-CSharp.dll:Vuforia.CylinderTargetBehaviour
@@ -203,4 +207,4 @@ f39fa2d90cea541e27581f74e8fbbf9a Assembly-CSharp.dll:Lean.Touch.LeanSpawnAt
 9f94f2bd15532b7f4fb26e9ddf013d57 Assembly-CSharp.dll:Lean.Touch.LeanFingerHeld
 c7b4e1cefa38e05c60ad69dee88481d8 Assembly-CSharp.dll:Lean.Touch.LeanSelectableRendererColor
 7cac06ac0eaa7257b831c29e4455ce1b Assembly-CSharp.dll:Vuforia.VuforiaConfiguration
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Clicker
+b2bff34abb437fbe3eb8f6419a94823c Assembly-CSharp.dll:.TouchModality
