@@ -1,9 +1,9 @@
 Android
 SceneListBegin?
-Assets/prueba.unity
 Assets/vision.unity
 SceneListEnd?
 268ef825502a475f763a8f3739ab652c Assembly-CSharp.dll:.VRIntegrationHelper
+b2bff34abb437fbe3eb8f6419a94823c Assembly-CSharp.dll:.TouchModality
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -94,6 +94,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 57a6815572027869e23decb5efd8f26b Assembly-CSharp.dll:Vuforia.VirtualButtonBehaviour
 e1a312172407d9d9f3690722d2c9ac73 Assembly-CSharp.dll:Lean.Touch.LeanCanvasArrow
 6c15db20cfd69979254593ffa5037d44 Assembly-CSharp.dll:Lean.Touch.LeanDestroy
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.VisionModality
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -125,7 +126,6 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Vuforia.DefaultInitializationErrorHandler
 2f514da27b71d477e62b77ba8324ad55 Assembly-CSharp.dll:Lean.Touch.LeanPlane
-75fbe662aa0cb4d511d194ea28b34643 Assembly-CSharp.dll:.TouchSelect
 0e5d517277ec9ce8ca9d50dd679a865c Assembly-CSharp.dll:Lean.Touch.LeanFingerSwipe
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Clicker
 eb3cd1af2e36a7a12552fafc4f6b3f13 Assembly-CSharp.dll:.AssetDownloader
@@ -191,7 +191,6 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-374f79f532fd6697720c0b5a53689f94 Assembly-CSharp.dll:.AddComponent
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 493c211ab85ec2db8c090d3ba6c0a013 Assembly-CSharp.dll:Lean.Touch.LeanSelectableSpriteRendererColor
 e8e8f0e750145acab4381d7e2fa841be Assembly-CSharp.dll:Lean.Touch.LeanFingerTap
@@ -207,4 +206,3 @@ f39fa2d90cea541e27581f74e8fbbf9a Assembly-CSharp.dll:Lean.Touch.LeanSpawnAt
 9f94f2bd15532b7f4fb26e9ddf013d57 Assembly-CSharp.dll:Lean.Touch.LeanFingerHeld
 c7b4e1cefa38e05c60ad69dee88481d8 Assembly-CSharp.dll:Lean.Touch.LeanSelectableRendererColor
 7cac06ac0eaa7257b831c29e4455ce1b Assembly-CSharp.dll:Vuforia.VuforiaConfiguration
-b2bff34abb437fbe3eb8f6419a94823c Assembly-CSharp.dll:.TouchModality
