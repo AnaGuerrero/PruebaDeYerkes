@@ -9,9 +9,14 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
     private GameObject btnAddCube;
     private GameObject btnLeftCube;
     private GameObject btnRightCube;
+    private GameObject btnAheadCube;
+    private GameObject btnBehindCube;
     private GameObject btnUpCube;
     private GameObject btnDownCube;
     private GameObject btnDeleteCube;
+    private GameObject btnExit;
+    private GameObject btnInstructions;
+    private GameObject btnImage;
     List<GameObject> cubos = new List<GameObject>();
     int numero = 0;
     int ultimo;
@@ -28,16 +33,26 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
         btnAddCube = GameObject.Find("addButton");
         btnLeftCube = GameObject.Find("btnLeft");
         btnRightCube = GameObject.Find("btnRight");
+        btnAheadCube = GameObject.Find("btnAhead");
+        btnBehindCube = GameObject.Find("btnBehind");
         btnUpCube = GameObject.Find("btnUp");
         btnDownCube = GameObject.Find("btnDown");
         btnDeleteCube = GameObject.Find("btnDelete");
+        btnExit = GameObject.Find("btnExit");
+        btnInstructions = GameObject.Find("btnInstructions");
+        btnImage = GameObject.Find("btnImage");
 
         btnAddCube.SetActive(true);
         btnLeftCube.SetActive(true);
         btnRightCube.SetActive(true);
+        btnAheadCube.SetActive(true);
+        btnBehindCube.SetActive(true);
         btnUpCube.SetActive(true);
         btnDownCube.SetActive(true);
         btnDeleteCube.SetActive(true);
+        btnExit.SetActive(true);
+        btnInstructions.SetActive(true);
+        btnImage.SetActive(true);
     }
 
     void IVirtualButtonEventHandler.OnButtonPressed(VirtualButtonAbstractBehaviour vb){
@@ -66,13 +81,25 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
                 Debug.Log("Botón Izquierdo");
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(-3, 0, 0);
+                    cubos[ultimo - 1].transform.Translate(-2, 0, 0);
                 }
                 break;
             case "btnRight":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(3, 0, 0);
+                    cubos[ultimo - 1].transform.Translate(2, 0, 0);
+                }
+                break;
+            case "btnAhead":
+                if (seleccionado)
+                {
+                    cubos[ultimo - 1].transform.Translate(0, 0, 2);
+                }
+                break;
+            case "btnBehind":
+                if (seleccionado)
+                {
+                    cubos[ultimo - 1].transform.Translate(0, 0, -2);
                 }
                 break;
             case "btnUp":
@@ -93,6 +120,18 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
                 }
                 break;
             case "btnDelete":
+                if (seleccionado)
+                {
+                    Destroy(cubos[ultimo - 1]);
+                    cubos.Remove(cubos[ultimo - 1]);
+                    visionSelect();
+                }
+                break;
+            case "btnExit":
+                break;
+            case "btnInstructions":
+                break;
+            case "btnImage":
                 break;
 
         }
