@@ -3,7 +3,7 @@ SceneListBegin?
 Assets/vision.unity
 SceneListEnd?
 268ef825502a475f763a8f3739ab652c Assembly-CSharp.dll:.VRIntegrationHelper
-b2bff34abb437fbe3eb8f6419a94823c Assembly-CSharp.dll:.TouchModality
+2dd1feaddd666a1026cb942a7c571fe8 Assembly-CSharp.dll:.TouchModality
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -94,7 +94,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 57a6815572027869e23decb5efd8f26b Assembly-CSharp.dll:Vuforia.VirtualButtonBehaviour
 e1a312172407d9d9f3690722d2c9ac73 Assembly-CSharp.dll:Lean.Touch.LeanCanvasArrow
 6c15db20cfd69979254593ffa5037d44 Assembly-CSharp.dll:Lean.Touch.LeanDestroy
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.VisionModality
+92d480dfc1301367f5bb1dacd6804ba5 Assembly-CSharp.dll:.VisionModality
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
