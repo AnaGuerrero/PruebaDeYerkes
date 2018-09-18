@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/selector.unity
+- path: Assets/NameRegister.unity
   isLoaded: 1
   isActive: 1

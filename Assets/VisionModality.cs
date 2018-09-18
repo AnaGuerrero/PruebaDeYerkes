@@ -101,7 +101,7 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
         Material material = new Material(Shader.Find("Diffuse"));
         material.SetTexture("textura1", texture);
 
-        plano = GameObject.Find("btnImage").GetComponentInChildren<Plane>();
+        //plano = GameObject.Find("btnImage").GetComponentInChildren<Plane>();
     }
 
     void IVirtualButtonEventHandler.OnButtonPressed(VirtualButtonAbstractBehaviour vb){

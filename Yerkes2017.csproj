@@ -294,6 +294,7 @@
   <ItemGroup>
     <Compile Include="Assets\Clicker.cs" />
     <Compile Include="Assets\CreateAssetBundle.cs" />
+    <Compile Include="Assets\dateRegisterScript.cs" />
     <Compile Include="Assets\Drag.cs" />
     <Compile Include="Assets\LeanTouch\Examples\Scripts\LeanCameraMove.cs" />
     <Compile Include="Assets\LeanTouch\Examples\Scripts\LeanCameraZoom.cs" />
@@ -327,8 +328,10 @@
     <Compile Include="Assets\LeanTouch\Scripts\LeanSnapshot.cs" />
     <Compile Include="Assets\LeanTouch\Scripts\LeanTouch.cs" />
     <Compile Include="Assets\loadAsset.cs" />
+    <Compile Include="Assets\nameRegisterScript.cs" />
     <Compile Include="Assets\Scripts\AssetDownloader.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
+    <Compile Include="Assets\SelectorScript.cs" />
     <Compile Include="Assets\TouchModality.cs" />
     <Compile Include="Assets\vbScript.cs" />
     <Compile Include="Assets\VisionModality.cs" />
