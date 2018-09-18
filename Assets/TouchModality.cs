@@ -15,7 +15,6 @@ public class TouchModality : MonoBehaviour {
     int ultimo;
     private string mMessage = "Mensaje de prueba!";
     private bool mYesPressed = false;
-    public Texture texture;
     private Image Background;
     private Image image;
     public Sprite sprite;

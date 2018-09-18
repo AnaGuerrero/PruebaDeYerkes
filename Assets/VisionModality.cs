@@ -28,9 +28,12 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
     private UnityEngine.UI.Image image;
     private Text Instructions;
     public Sprite sprite;
+    private Plane plano;
+    private Texture texture;
 
 
-    void Start(){
+    void Start()
+    {
 
         Screen.orientation = ScreenOrientation.Landscape;
 
@@ -94,6 +97,11 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
         Instructions.alignment = TextAnchor.MiddleCenter;
         Instructions.fontSize = 14;
 
+        texture = Resources.Load<Texture>("shape1");
+        Material material = new Material(Shader.Find("Diffuse"));
+        material.SetTexture("textura1", texture);
+
+        plano = GameObject.Find("btnImage").GetComponentInChildren<Plane>();
     }
 
     void IVirtualButtonEventHandler.OnButtonPressed(VirtualButtonAbstractBehaviour vb){
@@ -153,9 +161,10 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
             case "btnDown":
                 if (seleccionado)
                 {
-                    y = y - 2;
-                    if (y > 0)
+                    int aux = y - 2;
+                    if (aux > 0)
                     {
+                        y = y - 2;
                         cubos[ultimo - 1].transform.Translate(0, y, 0);
                     }
                 }
@@ -169,6 +178,7 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
                 }
                 break;
             case "btnExit":
+                AppExit();
                 break;
             case "btnInstructions":
                 ShowInstructions();
@@ -256,5 +266,11 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
 
         var BackTransform = Background.transform as RectTransform;
         BackTransform.sizeDelta = new Vector2(0, 0);
+    }
+
+    private void AppExit()
+    {
+        ScreenCapture.CaptureScreenshot("screenshot.jpg");
+        Application.Quit();
     }
 }

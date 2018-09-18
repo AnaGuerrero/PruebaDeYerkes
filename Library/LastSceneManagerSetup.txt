@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/vision.unity
+- path: Assets/selector.unity
   isLoaded: 1
   isActive: 1

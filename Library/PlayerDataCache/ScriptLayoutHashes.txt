@@ -1,9 +1,9 @@
 Android
 SceneListBegin?
-Assets/vision.unity
+Assets/selector.unity
 SceneListEnd?
 268ef825502a475f763a8f3739ab652c Assembly-CSharp.dll:.VRIntegrationHelper
-2dd1feaddd666a1026cb942a7c571fe8 Assembly-CSharp.dll:.TouchModality
+e4d4d5a35abfd92960ac2814e75d693e Assembly-CSharp.dll:.TouchModality
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset

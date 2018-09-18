@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/prueba.unity
     guid: 623914dcce6987148ae178ddf905496b
-  - enabled: 1
+  - enabled: 0
     path: Assets/vision.unity
     guid: 7e8e4a397208f21428293d12b867c6f7
+  - enabled: 1
+    path: Assets/selector.unity
+    guid: f00c6025720b75d40bad767197e438c1
