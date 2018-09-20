@@ -8,6 +8,7 @@ public class nameRegisterScript : MonoBehaviour {
 
     private Image Background;
     private Button btnNext;
+    private InputField txtField;
 
     // Use this for initialization
     void Start () {
@@ -17,6 +18,8 @@ public class nameRegisterScript : MonoBehaviour {
         var BackTransform = Background.transform as RectTransform;
         BackTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
 
+        txtField = GameObject.Find("InputField").GetComponent<InputField>();
+
         btnNext = GameObject.Find("NextBtn").GetComponent<Button>();
         btnNext.interactable = false;
     }
@@ -24,6 +27,11 @@ public class nameRegisterScript : MonoBehaviour {
     public void nextBtn()
     {
         SceneManager.LoadScene("dateRegister");
+    }
+
+    public void OnTextChange()
+    {
+        btnNext.interactable = true;
     }
 
 }

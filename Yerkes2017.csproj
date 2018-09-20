@@ -335,6 +335,7 @@
     <Compile Include="Assets\TouchModality.cs" />
     <Compile Include="Assets\vbScript.cs" />
     <Compile Include="Assets\VisionModality.cs" />
+    <Compile Include="Assets\Voice.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CylinderTargetBehaviour.cs" />
