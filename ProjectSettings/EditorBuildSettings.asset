@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/vision.unity
     guid: 7e8e4a397208f21428293d12b867c6f7
+  - enabled: 1
+    path: Assets/voice.unity
+    guid: 121a3cb37f064fe4c94b5020943689b9
