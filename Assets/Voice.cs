@@ -8,12 +8,14 @@ using System.ComponentModel;
 public class Voice : MonoBehaviour {
 
     KeywordRecognizer keywordRecognizer;
-    private string[] keywords_array = new string[11];
+    private string[] keywords_array = new string[12];
     int numero = 0;
     List<GameObject> cubos = new List<GameObject>();
     bool seleccionado = false;
     int ultimo;
     int y = 0;
+    int index;
+    int count;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +32,7 @@ public class Voice : MonoBehaviour {
         keywords_array[8] = "Imagen";
         keywords_array[9] = "Instrucciones";
         keywords_array[10] = "Salir";
+        keywords_array[11] = "Cambiar";
         keywordRecognizer = new KeywordRecognizer(keywords_array);
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
@@ -110,7 +113,9 @@ public class Voice : MonoBehaviour {
         string sNumero = (string)converter.ConvertTo(numero, typeof(string));
         cube.name = "Cubo" + sNumero;
         cubos.Add(cube);
-        voiceSelect();
+        count = cubos.Count - 1;
+        index = count;
+        seleccionado = true;
     }
 
     private bool GetSelect()
@@ -129,6 +134,14 @@ public class Voice : MonoBehaviour {
         else
         {
             seleccionado = false;
+        }
+    }
+
+    private void changeSelect()
+    {
+        if (seleccionado)
+        {
+
         }
     }
 

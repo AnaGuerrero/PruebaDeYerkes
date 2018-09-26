@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/voice.unity
+- path: Assets/prueba.unity
   isLoaded: 1
   isActive: 1

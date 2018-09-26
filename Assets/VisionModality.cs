@@ -30,12 +30,19 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
     public Sprite sprite;
     private Plane plano;
     private Texture texture;
+    int index;
+    int count;
+    UnityEngine.Object prefab;
+    UnityEngine.Object prefabSelect;
 
 
     void Start()
     {
 
         Screen.orientation = ScreenOrientation.Landscape;
+
+        prefab = Resources.Load("CuboTextura");
+        prefabSelect = Resources.Load("CuboSelect");
 
         VirtualButtonBehaviour[] vbList = GetComponentsInChildren<VirtualButtonBehaviour>();
         for (int i = 0; i < vbList.Length; ++i)
@@ -111,51 +118,38 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
         switch (vb.VirtualButtonName)
         {
             case "addButton":
-                Debug.Log("Entra a addButton");
-                /*btnAddCube.SetActive(false);
-                btnLeftCube.SetActive(true);*/
-                UnityEngine.Object prefab = Resources.Load("CuboTextura");
-                GameObject cube = (GameObject)Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
-                numero = numero + 1;
-                TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
-                string sNumero = (string)converter.ConvertTo(numero, typeof(string));
-                cube.name = "Cubo" + sNumero;
-                cube.AddComponent<Lean.Touch.LeanSelectable>();
-                cube.AddComponent<Lean.Touch.LeanTranslate>();
-                cubos.Add(cube);
-                Debug.Log(cube.name);
-                visionSelect();
+                addCube();
                 break;
             case "btnLeft":
                 Debug.Log("Botón Izquierdo");
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(-2, 0, 0);
+                    cubos[index].transform.Translate(-2, 0, 0);
                 }
                 break;
             case "btnRight":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(2, 0, 0);
+                    cubos[index].transform.Translate(2, 0, 0);
                 }
                 break;
             case "btnAhead":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(0, 0, 2);
+                    cubos[index].transform.Translate(0, 0, 2);
                 }
                 break;
             case "btnBehind":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(0, 0, -2);
+                    cubos[index].transform.Translate(0, 0, -2);
                 }
                 break;
             case "btnUp":
                 if (seleccionado)
                 {
                     y = y + 2;
-                    cubos[ultimo - 1].transform.Translate(0, y, 0);
+                    cubos[index].transform.Translate(0, y, 0);
                 }
                 break;
             case "btnDown":
@@ -165,17 +159,18 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
                     if (aux > 0)
                     {
                         y = y - 2;
-                        cubos[ultimo - 1].transform.Translate(0, y, 0);
+                        cubos[index].transform.Translate(0, y, 0);
                     }
                 }
                 break;
             case "btnDelete":
                 if (seleccionado)
                 {
-                    Destroy(cubos[ultimo - 1]);
-                    cubos.Remove(cubos[ultimo - 1]);
-                    visionSelect();
+                    DeleteObject();
                 }
+                break;
+            case "btnChange":
+                visionSelect();
                 break;
             case "btnExit":
                 AppExit();
@@ -208,17 +203,65 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
         return cubos;
     }
 
+    private void addCube()
+    {
+        GameObject cube = (GameObject)Instantiate(prefabSelect, new Vector3(0, 0, 0), Quaternion.identity);
+        numero = numero + 1;
+        TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
+        string sNumero = (string)converter.ConvertTo(numero, typeof(string));
+        cube.name = "Cubo" + sNumero;
+        cubos.Add(cube);
+        count = cubos.Count;
+        index = count - 1;
+        seleccionado = true;
+        ChangePrefab();
+    }
+
+    public void ChangePrefab()
+    {
+        for (int cuenta = cubos.Count - 1;  cuenta >= 0; cuenta--)
+        {
+            if (cuenta != index)
+            {
+                Destroy(cubos[cuenta]);
+                Vector3 vector3 = cubos[cuenta].transform.position;
+                cubos[cuenta] = (GameObject)Instantiate(prefab, vector3, Quaternion.identity);
+            }
+            else
+            {
+                Destroy(cubos[cuenta]);
+                Vector3 vector3 = cubos[cuenta].transform.position;
+                cubos[cuenta] = (GameObject)Instantiate(prefabSelect, vector3, Quaternion.identity);
+            }
+
+        }
+
+    }
+
     public void visionSelect()
     {
-        ultimo = cubos.Count;
+        if (seleccionado)
+        {
+            if (cubos.Count > 0)
+            {
+                if(index == 0)
+                {
+                    count = cubos.Count;
+                    index = count - 1;
 
-        if (ultimo > 0)
-        {
-            seleccionado = true;
-        }
-        else
-        {
-            seleccionado = false;
+                }
+                else
+                {
+                    index = index - 1;
+                }
+
+                seleccionado = true;
+                ChangePrefab();
+            }
+            else
+            {
+                seleccionado = false;
+            }
         }
     }
 
@@ -226,8 +269,9 @@ public class VisionModality : MonoBehaviour, IVirtualButtonEventHandler{
     {
         if (seleccionado)
         {
-            Destroy(cubos[ultimo - 1]);
-            cubos.Remove(cubos[ultimo - 1]);
+            Debug.Log(index.ToString());
+            Destroy(cubos[index]);
+            cubos.Remove(cubos[index]);
             visionSelect();
         }
     }

@@ -24,10 +24,15 @@ public class TouchModality : MonoBehaviour {
     private Text txtButton;
     private Text Instructions;
     private Text txtInstr;
+    UnityEngine.Object prefab;
+    UnityEngine.Object prefabSelect;
 
     public void Start()
     {
         Screen.orientation = ScreenOrientation.Landscape;
+
+        prefab = Resources.Load("CuboTextura");
+        prefabSelect = Resources.Load("CuboSelect");
 
         System.Random random = new System.Random();
         int aleatorio = random.Next(1, 4);
@@ -81,8 +86,7 @@ public class TouchModality : MonoBehaviour {
     {
         Debug.Log("Añadiendo componente");
 
-        UnityEngine.Object prefab = Resources.Load("CuboTextura");
-        GameObject cube = (GameObject)Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject cube = (GameObject)Instantiate(prefabSelect, new Vector3(0, 0, 0), Quaternion.identity);
         numero = numero + 1;
         TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
         string sNumero = (string)converter.ConvertTo(numero, typeof(string));
@@ -227,6 +231,16 @@ public class TouchModality : MonoBehaviour {
 
         var ButtonTransform = closeInstr.transform as RectTransform;
         ButtonTransform.sizeDelta = new Vector2(0, 0);
+    }
+
+    private void ChangeIzq()
+    {
+
+    }
+
+    private void ChangeDer()
+    {
+
     }
 
     public void Salir()

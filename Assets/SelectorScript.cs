@@ -107,6 +107,7 @@ public class SelectorScript : MonoBehaviour {
                 SceneManager.LoadScene("vision");
                 break;
             case 3:
+                SceneManager.LoadScene("voice");
                 break;
         }
     }
