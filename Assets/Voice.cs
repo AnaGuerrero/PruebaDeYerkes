@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
-using System.Linq;
 using System.ComponentModel;
 
 public class Voice : MonoBehaviour {
 
-    KeywordRecognizer keywordRecognizer;
+    //KeywordRecognizer keywordRecognizer;
     private string[] keywords_array = new string[12];
     int numero = 0;
     List<GameObject> cubos = new List<GameObject>();
@@ -33,12 +31,12 @@ public class Voice : MonoBehaviour {
         keywords_array[9] = "Instrucciones";
         keywords_array[10] = "Salir";
         keywords_array[11] = "Cambiar";
-        keywordRecognizer = new KeywordRecognizer(keywords_array);
+        /*keywordRecognizer = new KeywordRecognizer(keywords_array);
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
-        keywordRecognizer.Start();
+        keywordRecognizer.Start();*/
 	}
 
-    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    /*private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         switch(args.text)
         {
@@ -102,7 +100,7 @@ public class Voice : MonoBehaviour {
             case "Salir":
                 break;
         }
-    }
+    }*/
 
     private void addComponent()
     {

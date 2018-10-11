@@ -303,6 +303,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\ExportAssetBundles.cs" />
+    <Compile Include="Assets\Editor\KKSpeechRecognizer\KKAddSpeechFrameworkOniOS.cs" />
+    <Compile Include="Assets\Editor\KKSpeechRecognizer\KKSetSpeechRecognitionPermissionsOniOS.cs" />
     <Compile Include="Assets\Vuforia\Editor\Scripts\ComponentFactoryStarter\ComponentFactoryStarter.cs" />
     <Compile Include="Assets\Vuforia\Editor\Scripts\ExtensionImport.cs" />
     <Compile Include="Assets\Vuforia\Editor\Scripts\PostProcessBuildPlayer.cs" />

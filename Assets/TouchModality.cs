@@ -5,7 +5,8 @@ using System.ComponentModel;
 using UnityEngine.UI;
 using System;
 
-public class TouchModality : MonoBehaviour {
+public class TouchModality : MonoBehaviour
+{
 
     public Transform cuboTex;
     int numero = 0;
@@ -20,12 +21,16 @@ public class TouchModality : MonoBehaviour {
     public Sprite sprite;
     public Button cerrarFlyer;
     public Button shape;
+    public Button btnChangeIzq;
+    public Button btnChangeDer;
     private Button closeInstr;
     private Text txtButton;
     private Text Instructions;
     private Text txtInstr;
     UnityEngine.Object prefab;
     UnityEngine.Object prefabSelect;
+    int index;
+    int count;
 
     public void Start()
     {
@@ -36,7 +41,7 @@ public class TouchModality : MonoBehaviour {
 
         System.Random random = new System.Random();
         int aleatorio = random.Next(1, 4);
-        if(aleatorio == 1)
+        if (aleatorio == 1)
         {
             sprite = Resources.Load<Sprite>("sprite1");
         }
@@ -80,6 +85,10 @@ public class TouchModality : MonoBehaviour {
         txtInstr.fontSize = 14;
         closeInstr.onClick.AddListener(CloseInstructions);
 
+        btnChangeIzq = GameObject.Find("ChangeIzq").GetComponent<Button>();
+        btnChangeIzq.interactable = false;
+        btnChangeDer = GameObject.Find("ChangeDer").GetComponent<Button>();
+        btnChangeDer.interactable = false;
     }
 
     public void addComponent()
@@ -92,12 +101,10 @@ public class TouchModality : MonoBehaviour {
         string sNumero = (string)converter.ConvertTo(numero, typeof(string));
         cube.name = "Cubo" + sNumero;
         cubos.Add(cube);
-        Debug.Log(cube.name);
-        if (GetSelect())
-        {
-            DeleteTranslate();
-        }
-        touchSelect();
+        count = cubos.Count;
+        index = count - 1;
+        seleccionado = true;
+        ChangePrefab();
     }
 
     public List<GameObject> GetList()
@@ -107,16 +114,101 @@ public class TouchModality : MonoBehaviour {
 
     public void touchSelect()
     {
-        ultimo = cubos.Count;
-
-        if (ultimo > 0)
+        if (seleccionado)
         {
-            cubos[ultimo - 1].AddComponent<Lean.Touch.LeanTranslate>();
-            seleccionado = true;
+            if (cubos.Count > 0)
+            {
+                if (index == 0)
+                {
+                    count = cubos.Count;
+                    index = count - 1;
+
+                }
+                else
+                {
+                    index = index - 1;
+                }
+
+                seleccionado = true;
+                ChangePrefab();
+            }
+            else
+            {
+                seleccionado = false;
+            }
+        }
+    }
+
+    public void ChangePrefab()
+    {
+        for (int cuenta = cubos.Count - 1; cuenta >= 0; cuenta--)
+        {
+            if (cuenta != index)
+            {
+                Destroy(cubos[cuenta]);
+                Vector3 vector3 = cubos[cuenta].transform.position;
+                cubos[cuenta] = (GameObject)Instantiate(prefab, vector3, Quaternion.identity);
+            }
+            else
+            {
+                Destroy(cubos[cuenta]);
+                Vector3 vector3 = cubos[cuenta].transform.position;
+                cubos[cuenta] = (GameObject)Instantiate(prefabSelect, vector3, Quaternion.identity);
+                cubos[cuenta].AddComponent<Lean.Touch.LeanTranslate>();
+
+            }
+
+        }
+
+        btnInteractable();
+
+    }
+
+    public void btnInteractable()
+    {
+        if (cubos.Count >= 2)
+        {
+            if (index == 0)
+            {
+                btnChangeIzq.interactable = false;
+                btnChangeDer.interactable = true;
+            }
+            else
+            {
+                if (index == cubos.Count - 1)
+                {
+                    btnChangeIzq.interactable = true;
+                    btnChangeDer.interactable = false;
+                }
+                else
+                {
+                    btnChangeIzq.interactable = true;
+                    btnChangeDer.interactable = true;
+                }
+            }
         }
         else
         {
-            seleccionado = false;
+            btnChangeIzq.interactable = false;
+            btnChangeDer.interactable = false;
+        }
+    }
+
+    public void ChangeIzq()
+    {
+        if (index - 1 <= cubos.Count - 1 && index - 1 > -1)
+        {
+            index = index - 1;
+            ChangePrefab();
+        }
+    }
+
+    public void ChangeDer()
+    {
+        if (index + 1 <= cubos.Count - 1)
+        {
+            index = index + 1;
+            ChangePrefab();
         }
     }
 
@@ -127,7 +219,7 @@ public class TouchModality : MonoBehaviour {
 
     public void DeleteTranslate()
     {
-        translate = cubos[ultimo - 1].GetComponent<Lean.Touch.LeanTranslate>();
+        translate = cubos[index].GetComponent<Lean.Touch.LeanTranslate>();
         Destroy(translate);
     }
 
@@ -135,55 +227,12 @@ public class TouchModality : MonoBehaviour {
     {
         if (seleccionado)
         {
-            Destroy(cubos[ultimo - 1]);
-            cubos.Remove(cubos[ultimo - 1]);
+            DeleteTranslate();
+            Destroy(cubos[index]);
+            cubos.Remove(cubos[index]);
             touchSelect();
         }
     }
-
-    public void FinishTest()
-    {
-
-    }
-
-    public void ShowDialog()
-    {
-#if UNITY_EDITOR
-        Debug.Log("No compatible con esta plataforma");
-#endif
-#if UNITY_ANDROID
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-        activity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
-        {
-            AndroidJavaObject alertDialogBuilder = new AndroidJavaObject("android/app/AlertDialog$Builder", activity);
-            alertDialogBuilder.Call<AndroidJavaObject>("setMessage", mMessage);
-            alertDialogBuilder.Call<AndroidJavaObject>("setPositiveButton", "De acuerdo", new PositiveButtonListener(this));
-            alertDialogBuilder.Call<AndroidJavaObject>("setCancelable", true);
-            AndroidJavaObject dialog = alertDialogBuilder.Call<AndroidJavaObject>("create");
-            dialog.Call("show");
-        }
-        ));
-#endif
-    }
-
-#if UNITY_ANDROID
-    private class PositiveButtonListener : AndroidJavaProxy
-    {
-        private TouchModality mDialog;
-        
-        public PositiveButtonListener(TouchModality tm): base("android.content.DialogInterface$OnClickListener")
-        {
-            mDialog = tm;
-        }
-
-        public void onClick(AndroidJavaObject obj, int value)
-        {
-            mDialog.mYesPressed = true;
-        }
-    }
-#endif
 
     public void ShowImage()
     {
@@ -196,7 +245,7 @@ public class TouchModality : MonoBehaviour {
         var BackTransform = Background.transform as RectTransform;
         BackTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
     }
-    
+
     public void ShapeOnClick()
     {
         var RectTransform = image.transform as RectTransform;
@@ -231,16 +280,6 @@ public class TouchModality : MonoBehaviour {
 
         var ButtonTransform = closeInstr.transform as RectTransform;
         ButtonTransform.sizeDelta = new Vector2(0, 0);
-    }
-
-    private void ChangeIzq()
-    {
-
-    }
-
-    private void ChangeDer()
-    {
-
     }
 
     public void Salir()

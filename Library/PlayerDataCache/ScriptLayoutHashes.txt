@@ -1,11 +1,16 @@
 Android
 SceneListBegin?
+Assets/NameRegister.unity
+Assets/dateRegister.unity
 Assets/selector.unity
 Assets/prueba.unity
 Assets/vision.unity
+Assets/voice.unity
 SceneListEnd?
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SelectorScript
 268ef825502a475f763a8f3739ab652c Assembly-CSharp.dll:.VRIntegrationHelper
-e4d4d5a35abfd92960ac2814e75d693e Assembly-CSharp.dll:.TouchModality
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.nameRegisterScript
+8a39d55a55d26f8f68bde6000c78e1ff Assembly-CSharp.dll:.TouchModality
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -173,9 +178,11 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.dateRegisterScript
 a8df30edef0c9ba664999240dc0b3058 Assembly-CSharp.dll:Lean.Touch.LeanCameraMove
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Vuforia.DefaultTrackableEventHandler
 f67e4dccde37b3c42d067b6bf680c32e Assembly-CSharp.dll:Vuforia.TextRecoBehaviour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:KKSpeech.SpeechRecognitionLanguageDropdown
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
@@ -187,12 +194,14 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Vuforia.VideoBackgroundBehaviour
 15bea26698002c6c4a3087131232ce5c Assembly-CSharp.dll:Vuforia.WordBehaviour
 3ad83d9b16897b0fec4f8b42b7498cdc Assembly-CSharp.dll:Vuforia.ObjectTargetBehaviour
+31615e618c6318ae1584a3aec191e584 Assembly-CSharp.dll:KKSpeech.SpeechRecognizerListener
 7def5fe351fb82fda3891095d17de420 Assembly-CSharp.dll:Lean.Touch.LeanScale
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+d40f7c8092372454680c407d5ae89cf3 Assembly-CSharp.dll:.RecordingCanvas
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 493c211ab85ec2db8c090d3ba6c0a013 Assembly-CSharp.dll:Lean.Touch.LeanSelectableSpriteRendererColor
 e8e8f0e750145acab4381d7e2fa841be Assembly-CSharp.dll:Lean.Touch.LeanFingerTap
@@ -200,6 +209,7 @@ e8e8f0e750145acab4381d7e2fa841be Assembly-CSharp.dll:Lean.Touch.LeanFingerTap
 b69fb5034809d4cbe977f438123a337f Assembly-CSharp.dll:Lean.Touch.LeanCameraZoom
 8e194e74053b8ffdee68402e7e9dd69f Assembly-CSharp.dll:Lean.Touch.LeanFingerTrail
 493c211ab85ec2db8c090d3ba6c0a013 Assembly-CSharp.dll:Lean.Touch.LeanSelectableGraphicColor
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Voice
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Rotate
 da8b1afa3aba9ced70c35c501f25776f Assembly-CSharp.dll:Lean.Touch.LeanTranslate
 d2a2bd333db22f480a8589e167314ecc Assembly-CSharp.dll:Vuforia.UserDefinedTargetBuildingBehaviour
@@ -208,4 +218,3 @@ f39fa2d90cea541e27581f74e8fbbf9a Assembly-CSharp.dll:Lean.Touch.LeanSpawnAt
 9f94f2bd15532b7f4fb26e9ddf013d57 Assembly-CSharp.dll:Lean.Touch.LeanFingerHeld
 c7b4e1cefa38e05c60ad69dee88481d8 Assembly-CSharp.dll:Lean.Touch.LeanSelectableRendererColor
 7cac06ac0eaa7257b831c29e4455ce1b Assembly-CSharp.dll:Vuforia.VuforiaConfiguration
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SelectorScript
