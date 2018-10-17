@@ -1,10 +1,5 @@
 Android
 SceneListBegin?
-Assets/NameRegister.unity
-Assets/dateRegister.unity
-Assets/selector.unity
-Assets/prueba.unity
-Assets/vision.unity
 Assets/voice.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SelectorScript

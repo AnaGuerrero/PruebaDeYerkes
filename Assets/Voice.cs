@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.ComponentModel;
+using KKSpeech;
+using UnityEngine.UI;
+using System.Threading;
 
 public class Voice : MonoBehaviour {
 
@@ -14,9 +18,11 @@ public class Voice : MonoBehaviour {
     int y = 0;
     int index;
     int count;
+    Button btnRecording;
+    Text txtRecording;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         Screen.orientation = ScreenOrientation.Landscape;
 
         keywords_array[0] = "Arriba";
@@ -31,76 +37,156 @@ public class Voice : MonoBehaviour {
         keywords_array[9] = "Instrucciones";
         keywords_array[10] = "Salir";
         keywords_array[11] = "Cambiar";
-        /*keywordRecognizer = new KeywordRecognizer(keywords_array);
-        keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
-        keywordRecognizer.Start();*/
-	}
 
-    /*private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
-    {
-        switch(args.text)
+        btnRecording = GameObject.Find("btnStartRecording").GetComponent<Button>();
+        txtRecording = GameObject.Find("txtVoice").GetComponent<Text>();
+
+        SpeechRecognizer.SetDetectionLanguage("es-MX");
+        SpeechRecognizer.StartRecording(true);
+
+        if (SpeechRecognizer.ExistsOnDevice())
         {
-            case "Arriba":
+            SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
+            listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
+            listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
+            listener.onErrorDuringRecording.AddListener(OnError);
+            listener.onErrorOnStartRecording.AddListener(OnError);
+            listener.onFinalResults.AddListener(OnFinalResult);
+            listener.onPartialResults.AddListener(OnPartialResult);
+            listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
+            SpeechRecognizer.RequestAccess();
+        }
+        else
+        {
+            txtRecording.text = "Sorry, but this device doesn't support speech recognition";
+        }
+    }
+
+    public void OnFinalResult(string result)
+    {
+        txtRecording.text = "F " + result;
+        OnPhraseRecognized(result);
+    }
+
+    public void OnPartialResult(string result)
+    {
+        txtRecording.text = "P " + result;
+        if (SpeechRecognizer.IsRecording())
+        {
+            SpeechRecognizer.StopIfRecording();
+        }
+    }
+
+    public void OnAvailabilityChange(bool available)
+    {
+        if (!available)
+        {
+            txtRecording.text = "Speech Recognition not available";
+        }
+    }
+
+    public void OnAuthorizationStatusFetched(AuthorizationStatus status)
+    {
+        switch (status)
+        {
+            case AuthorizationStatus.Authorized:
+
+                break;
+            default:
+
+                break;
+        }
+    }
+
+    public void OnEndOfSpeech()
+    {
+        if (SpeechRecognizer.IsRecording())
+        {
+            SpeechRecognizer.StopIfRecording();
+        }
+    }
+
+    public void OnError(string error)
+    {
+        Debug.LogError(error);
+
+    }
+
+    public void OnStopRecordingPressed()
+    {
+        if (!SpeechRecognizer.IsRecording())
+        {
+            SpeechRecognizer.SetDetectionLanguage("es-MX");
+            SpeechRecognizer.StartRecording(true);
+        }
+    }
+
+    private void OnPhraseRecognized(string args)
+    {
+
+        switch (args)
+        {
+            case "arriba":
                 if (seleccionado)
                 {
                     y = y + 2;
-                    cubos[ultimo - 1].transform.Translate(0, y, 0);
+                    cubos[index].transform.Translate(0, y, 0);
                 }
                 break;
-            case "Abajo":
+            case "abajo":
                 if (seleccionado)
                 {
                     int aux = y - 2;
                     if (aux > 0)
                     {
                         y = y - 2;
-                        cubos[ultimo - 1].transform.Translate(0, y, 0);
+                        cubos[index].transform.Translate(0, y, 0);
                     }
                 }
                 break;
-            case "Izquierda":
+            case "izquierda":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(-2, 0, 0);
+                    cubos[index].transform.Translate(-2, 0, 0);
                 }
                 break;
-            case "Derecha":
+            case "derecha":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(2, 0, 0);
+                    cubos[index].transform.Translate(2, 0, 0);
                 }
                 break;
-            case "Adelante":
+            case "adelante":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(0, 0, 2);
+                    cubos[index].transform.Translate(0, 0, 2);
                 }
                 break;
-            case "Atrás":
+            case "atrás":
                 if (seleccionado)
                 {
-                    cubos[ultimo - 1].transform.Translate(0, 0, -2);
+                    cubos[index].transform.Translate(0, 0, -2);
                 }
                 break;
-            case "Añadir":
+            case "añadir":
                 addComponent();
                 break;
-            case "Borrar":
+            case "borrar":
                 if (seleccionado)
                 {
-                    Destroy(cubos[ultimo - 1]);
-                    cubos.Remove(cubos[ultimo - 1]);
+                    Destroy(cubos[index]);
+                    cubos.Remove(cubos[index]);
                     voiceSelect();
                 }
                 break;
-            case "Imagen":
+            case "imagen":
                 break;
-            case "Instrucciones":
+            case "instrucciones":
                 break;
-            case "Salir":
+            case "salir":
                 break;
         }
-    }*/
+    }
 
     private void addComponent()
     {
@@ -111,8 +197,8 @@ public class Voice : MonoBehaviour {
         string sNumero = (string)converter.ConvertTo(numero, typeof(string));
         cube.name = "Cubo" + sNumero;
         cubos.Add(cube);
-        count = cubos.Count - 1;
-        index = count;
+        count = cubos.Count;
+        index = count - 1;
         seleccionado = true;
     }
 
@@ -144,7 +230,24 @@ public class Voice : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update() {
+
+    }
+
+    class HiloCorrer {
+
+        public static void CorrerRecording()
+        {
+            if (SpeechRecognizer.IsRecording())
+            {
+                SpeechRecognizer.StopIfRecording();
+                SpeechRecognizer.SetDetectionLanguage("es-MX");
+                SpeechRecognizer.StartRecording(true);
+            }else
+            {
+                SpeechRecognizer.SetDetectionLanguage("es-MX");
+                SpeechRecognizer.StartRecording(true);
+            }
+        }
+    }
 }

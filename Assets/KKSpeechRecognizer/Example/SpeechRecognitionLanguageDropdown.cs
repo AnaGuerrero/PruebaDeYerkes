@@ -9,13 +9,15 @@ namespace KKSpeech {
 
 		private Dropdown dropdown;
 		private List<LanguageOption> languageOptions;
+        private Text texto;
 
 		void Start () {
 			dropdown = GetComponent<Dropdown>();
 			dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
 			dropdown.ClearOptions();
+            texto = GameObject.Find("LanguageText").GetComponent<Text>();
 
-			GameObject.FindObjectOfType<SpeechRecognizerListener>().
+            GameObject.FindObjectOfType<SpeechRecognizerListener>().
 				onSupportedLanguagesFetched.
 				AddListener(OnSupportedLanguagesFetched);
 
@@ -29,7 +31,7 @@ namespace KKSpeech {
 
 		void OnDropdownValueChanged(int index) {
 			LanguageOption languageOption = languageOptions[index];
-
+            texto.text = (languageOption.id.ToString());
 			SpeechRecognizer.SetDetectionLanguage(languageOption.id);
 		}
 

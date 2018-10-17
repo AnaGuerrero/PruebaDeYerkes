@@ -20,6 +20,7 @@ public class RecordingCanvas : MonoBehaviour {
 			listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
 			startRecordingButton.enabled = false;
 			SpeechRecognizer.RequestAccess();
+            SpeechRecognizer.GetSupportedLanguages();
 		} else {
 			resultText.text = "Sorry, but this device doesn't support speech recognition";
 			startRecordingButton.enabled = false;
